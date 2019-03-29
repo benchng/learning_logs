@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from secrets import SECRET_KEY
+#from secrets import SECRET_KEY
 import django_heroku
 #from boto.s3.connection import S3Connection
 
