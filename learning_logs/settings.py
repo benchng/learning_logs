@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from secrets import SECRET_KEY
+#from secrets import SECRET_KEY
 import django_heroku
+from boto.s3.connection import S3Connection
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY
+SECRET_KEY = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
