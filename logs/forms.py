@@ -6,3 +6,4 @@ class TopicForm(forms.ModelForm):
         model = Topic
         fields = ['text']  #accessing the keys
         labels = {'text': ''}
+
