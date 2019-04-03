@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-#from secrets import SECRET_KEY
+from secrets import SECRET_KEY
 import django_heroku
 #from boto.s3.connection import S3Connection
 
@@ -26,7 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = (os.environ['SECRET_KEY'])
-SECRET_KEY =  (os.environ['SECRET_KEY'])
+#SECRET_KEY =  (os.environ['SECRET_KEY'])
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'logs', #my apps
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -80,23 +82,23 @@ WSGI_APPLICATION = 'learning_logs.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_name',
-        'USER': 'db_user',
-        'PASSWORD': 'db_user_password',
-        'HOST': 'localhost',
-        'PORT': 'db_port_number',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'db_name',
+#        'USER': 'db_user',
+#        'PASSWORD': 'db_user_password',
+#        'HOST': 'localhost',
+#        'PORT': 'db_port_number',
+#    }
+#}
 
 
 # Password validation
@@ -138,3 +140,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
+
+#My setting, when unauthenicated user requests a page protected by the @login_required decorator django will send the user to defined the URL
+LOGIN_URL = '/user/login/'
