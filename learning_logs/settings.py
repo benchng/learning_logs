@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3', #third party app
     'logs', #my apps
     'users',
 ]
@@ -143,3 +144,8 @@ django_heroku.settings(locals())
 
 #My setting, when unauthenicated user requests a page protected by the @login_required decorator django will send the user to defined the URL
 LOGIN_URL = '/user/login/'
+
+#Setting for django-bootstrap3
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}
