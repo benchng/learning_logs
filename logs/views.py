@@ -44,7 +44,7 @@ def new_topic(request):
         if form.is_valid():
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
-            new_topic.save(
+            new_topic.save()
             #form.save()
             return HttpResponseRedirect(reverse('logs:topics'))
 
@@ -63,7 +63,7 @@ def new_entry(request, topic_id):
         #POST data submitted; process data
         form = EntryForm(data=request.POST)
         if form.is_valid():
-            new_entry = form.save(commit=False)
+            new_entry = form.save(çcommit=False)
             new_entry.topic = topic
             new_entry.save()
             return HttpResponseRedirect(reverse('logs:topic', args=[topic_id]))
